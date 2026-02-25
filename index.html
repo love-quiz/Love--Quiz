@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShopLaunch Admin + Storefront</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>ShopLaunch</h1>
+      <p>Manage products and sell with M-Pesa, Visa, and Airtel Money.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Add / Edit Product</h2>
+        <form id="productForm" class="form-grid">
+          <input type="hidden" id="productId" />
+
+          <label>
+            Product Name
+            <input id="name" required placeholder="e.g. Wireless Earbuds" />
+          </label>
+
+          <label>
+            Price (KES)
+            <input id="price" type="number" min="1" required placeholder="e.g. 3499" />
+          </label>
+
+          <label class="full-width">
+            Description
+            <textarea id="description" rows="3" required placeholder="Describe your product"></textarea>
+          </label>
+
+          <label class="full-width">
+            Product Image
+            <input id="image" type="file" accept="image/*" />
+          </label>
+
+          <div class="actions full-width">
+            <button type="submit" id="saveBtn">Save Product</button>
+            <button type="button" id="clearBtn" class="muted">Clear</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Checkout</h2>
+        <div class="checkout-box">
+          <label>
+            Payment Method
+            <select id="paymentMethod">
+              <option value="mpesa">M-Pesa STK Push</option>
+              <option value="visa">Visa Card</option>
+              <option value="airtel">Airtel Money</option>
+            </select>
+          </label>
+          <label id="paymentFieldLabel">
+            Phone / Card Number
+            <input id="paymentDetail" placeholder="Enter number" />
+          </label>
+          <button id="payBtn">Pay for Cart</button>
+          <p class="hint" id="paymentHint">Choose products first, then complete payment.</p>
+        </div>
+      </section>
+
+      <section class="panel full-span">
+        <h2>Products</h2>
+        <div id="products" class="products"></div>
+      </section>
+
+      <section class="panel full-span">
+        <h2>Cart</h2>
+        <div id="cart" class="cart"></div>
+        <p class="total">Total: KES <span id="cartTotal">0</span></p>
+      </section>
+    </main>
+
+    <template id="productTemplate">
+      <article class="card">
+        <img class="thumb" alt="Product image" />
+        <div class="card-content">
+          <h3 class="title"></h3>
+          <p class="desc"></p>
+          <p class="price"></p>
+        </div>
+        <div class="card-actions">
+          <button class="edit">Edit</button>
+          <button class="delete muted">Delete</button>
+          <button class="add">Add to Cart</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
